@@ -71,7 +71,7 @@ public class GerenciadorDeUsuario {
 		} else {
 			System.out.println("Usuario nao encontrado");
 		}
-	}
+	} 
 
 	public void reescreverArquivo(List<Usuario> usuarios) {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(NOME_ARQUIVO))) {

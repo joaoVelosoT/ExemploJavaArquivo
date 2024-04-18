@@ -3,12 +3,13 @@ package sistema;
 import java.util.Scanner;
 
 import service.HandleMenu;
+import service.HandleMenuProduto;
 
 public class Sistema {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		HandleMenu hm = new HandleMenu();
+		HandleMenuProduto hm = new HandleMenuProduto();
 		int opcao = 0;
 
 		do {
@@ -37,10 +38,7 @@ public class Sistema {
 				hm.listarId();
 				break;
 			}
-			case 6: {
-				hm.login();
-				break;
-			}
+			
 			default:
 				System.out.println("Opcao invalida");
 				break;
