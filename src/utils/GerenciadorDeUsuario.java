@@ -71,7 +71,7 @@ public class GerenciadorDeUsuario {
 		} else {
 			System.out.println("Usuario nao encontrado");
 		}
-	} 
+	}
 
 	public void reescreverArquivo(List<Usuario> usuarios) {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(NOME_ARQUIVO))) {
@@ -109,10 +109,13 @@ public class GerenciadorDeUsuario {
 			if (usuario.getId() == id) {
 				System.out.println("ID: " + usuario.getId() + ", Nome: " + "" + usuario.getNome() + ", Senha: "
 						+ usuario.getSenha());
+				encontrado = true;
 			} else {
-				System.out.println("Nao existe esse usuario no sistema");
-				break;
+				
 			}
+		}
+		if(!encontrado) {
+			System.out.println("Usuario nao encontrado");
 		}
 	}
 
@@ -151,6 +154,28 @@ public class GerenciadorDeUsuario {
 			System.out.println("Acesso permitido");
 		} else {
 			System.out.println("Acesso negado");
+		}
+
+	}
+
+	public void trocarSenha(String login, String senha, String newSenha) {
+		List<Usuario> usuarios = lerUsuarios();
+		boolean acesso = false;
+		for (Usuario usuario : usuarios) {
+			if (usuario.getNome().equals(login) && usuario.getSenha().equals(senha)) {
+				acesso = true;
+				usuario.setSenha(newSenha);
+
+			} else {
+				acesso = false;
+			}
+		}
+
+		if (acesso) {
+			reescreverArquivo(usuarios);
+			System.out.println("Senha editado com sucesso!");
+		} else {
+			System.out.println("Usuario nao encontrado");
 		}
 
 	}

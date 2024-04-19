@@ -1,5 +1,6 @@
 package service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 import models.Usuario;
@@ -17,12 +18,33 @@ public class HandleMenu {
 	}
 
 	public void criar() {
+		String nome = "";
+		// Inicio do input do nome, e da verificação
+		boolean nomeVazio = false;
+		while (nomeVazio == false) {
+			System.out.println("Digite o nome");
+			nome = sc.nextLine();
+			if (nome.length() == 0) {
+				System.err.println("Não deixe espaços vazios");
 
-		System.out.println("Digite o nome:");
-		String nome = sc.next();
+			} else {
+				nomeVazio = true;
+			}
+		}
 
-		System.out.println("Digite a senha:");
-		String senha = sc.next();
+		String senha = "";
+		// Inicio do input do nome, e da verificação
+		boolean senhaVazio = false;
+		while (senhaVazio == false) {
+			System.out.println("Digite a senha");
+			senha = sc.nextLine();
+			if (senha.length() == 0) {
+				System.err.println("Não deixe espaços vazios");
+
+			} else {
+				senhaVazio = true;
+			}
+		}
 
 		int id = getNextId();
 
@@ -32,42 +54,183 @@ public class HandleMenu {
 	}
 
 	public void editar() {
-		System.out.println("Digite o ID do usuario a ser modificado");
-		int id = sc.nextInt();
-		
-		System.out.println("Digite o novo nome: ");
-		String newNome = sc.next();
-				
-		System.out.println("Digite a nova senha: ");
-		String newSenha = sc.next();
-	
+		int id = 0;
+		// Inicio do input dos dependentes, e da verificação
+		boolean idPositivo = false;
+		while (idPositivo == false) {
+			System.out.println("Digite o ID que deseja modificar");
+			try {
+				id = sc.nextInt();
+				if (id < 0) {
+					System.err.println("Erro - Não e possivel ter um ID negativo");
+				} else {
+					idPositivo = true;
+				}
+			} catch (Exception e) {
+				System.err.println("Erro - Digite um valor numerico");
+			}
+			sc.nextLine();
+		}
+
+		String newNome = "";
+		// Inicio do input do nome, e da verificação
+		boolean nomeVazioNew = false;
+		while (nomeVazioNew == false) {
+			System.out.println("Digite o nome");
+			newNome = sc.nextLine();
+			if (newNome.length() == 0) {
+				System.err.println("Não deixe espaços vazios");
+
+			} else {
+				nomeVazioNew = true;
+			}
+		}
+
+		String newSenha = "";
+		// Inicio do input do nome, e da verificação
+		boolean senhaVazioNew = false;
+		while (senhaVazioNew == false) {
+			System.out.println("Digite a senha");
+			newSenha = sc.nextLine();
+			if (newSenha.length() == 0) {
+				System.err.println("Não deixe espaços vazios");
+
+			} else {
+				senhaVazioNew = true;
+			}
+		}
+
 		gs.editarUsuario(id, newNome, newSenha);
 	}
 
 	public void deletar() {
-		System.out.println("Digite o ID do usuario a ser deletado: ");
-		int id = sc.nextInt();
+		int id = 0;
+		// Inicio do input dos dependentes, e da verificação
+		boolean idPositivo = false;
+		while (idPositivo == false) {
+			System.out.println("Digite o ID que deseja deletar");
+			try {
+				id = sc.nextInt();
+				if (id < 0) {
+					System.err.println("Erro - Não e possivel ter um ID negativo");
+				} else {
+					idPositivo = true;
+				}
+			} catch (Exception e) {
+				System.err.println("Erro - Digite um valor numerico");
+			}
+			sc.nextLine();
+
+		}
 		gs.deletarUsuario(id);
 	}
 
 	public void listar() {
 		gs.listarUsuarios();
 	}
-	
+
 	public void listarId() {
-		System.out.println("Digite o ID do usuario a ser lido: ");
-		int id = sc.nextInt();
-		gs.listarUsuarioId(id);
+		int id = 0;
+		// Inicio do input dos dependentes, e da verificação
+		boolean idPositivo = false;
+		while (idPositivo == false) {
+			System.out.println("Digite o ID que deseja visualizar");
+			try {
+				id = sc.nextInt();
+				if (id < 0) {
+					System.err.println("Erro - Não e possivel ter um ID negativo");
+				} else {
+					idPositivo = true;
+				}
+			} catch (Exception e) {
+				System.err.println("Erro - Digite um valor numerico");
+			}
+			sc.nextLine();
+			gs.listarUsuarioId(id);
+		}
+		
 	}
-	
+
 	public void login() {
-		System.out.println("Digite o seu login");
-		String login = sc.next();
+		String nome = "";
+		// Inicio do input do nome, e da verificação
+		boolean nomeVazio = false;
+		while (nomeVazio == false) {
+			System.out.println("Digite o nome");
+			nome = sc.nextLine();
+			if (nome.length() == 0) {
+				System.err.println("Não deixe espaços vazios");
+
+			} else {
+				nomeVazio = true;
+			}
+		}
+
+		String senha = "";
+		// Inicio do input do nome, e da verificação
+		boolean senhaVazio = false;
+		while (senhaVazio == false) {
+			System.out.println("Digite a senha");
+			senha = sc.nextLine();
+			if (senha.length() == 0) {
+				System.err.println("Não deixe espaços vazios");
+
+			} else {
+				senhaVazio = true;
+			}
+		}
+
+		gs.login(nome, senha);
+	}
+
+	public void trocarSenha() {
+
+		String nome = "";
+		// Inicio do input do nome, e da verificação
+		boolean nomeVazio = false;
+		while (nomeVazio == false) {
+			System.out.println("Digite o nome");
+			nome = sc.nextLine();
+			if (nome.length() == 0) {
+				System.err.println("Não deixe espaços vazios");
+
+			} else {
+				nomeVazio = true;
+			}
+		}
+
+		String senha = "";
+		// Inicio do input do nome, e da verificação
+		boolean senhaVazio = false;
+		while (senhaVazio == false) {
+			System.out.println("Digite a senha");
+			senha = sc.nextLine();
+			if (senha.length() == 0) {
+				System.err.println("Não deixe espaços vazios");
+
+			} else {
+				senhaVazio = true;
+			}
+		}
 		
-		System.out.println("Digite sua senha");
-		String senha = sc.next();
 		
-		gs.login(login, senha);
+		
+		String newSenha = "";
+		// Inicio do input do nome, e da verificação
+		boolean newSenhaVazio = false;
+		while (newSenhaVazio == false) {
+			System.out.println("Digite a nova senha");
+			newSenha = sc.nextLine();
+			if (newSenha.length() == 0) {
+				System.err.println("Não deixe espaços vazios");
+
+			} else {
+				newSenhaVazio = true;
+			}
+		}
+
+		gs.trocarSenha(nome, senha, newSenha);
+
 	}
 
 	private int getNextId() {
@@ -81,8 +244,7 @@ public class HandleMenu {
 				maxId = id;
 			}
 		}
-		return maxId+1;
+		return maxId + 1;
 	}
 
 }
-	

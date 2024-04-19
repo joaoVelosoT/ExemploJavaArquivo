@@ -16,14 +16,55 @@ public class HandleMenuProduto {
 	}
 
 	public void criar() {
-		System.out.println("Digite o nome do produto: ");
-		String nome = sc.next();
+		String nome = "";
+		// Inicio do input do nome, e da verificação
+		boolean nomeVazio = false;
+		while (nomeVazio == false) {
+			System.out.println("Digite o nome");
+			nome = sc.nextLine();
+			if (nome.length() == 0) {
+				System.err.println("Não deixe espaços vazios");
 
-		System.out.println("Digite o preço do produto: ");
-		double preco = sc.nextDouble();
+			} else {
+				nomeVazio = true;
+			}
+		}
+		
+		double preco = 0;
+		boolean precoPositivo = false;
+		while (precoPositivo == false) {
+			System.out.println("Digite o preco");
+			try {
+				preco = sc.nextDouble();
+				if (preco < 1) {
+					System.err.println("Erro - Digite um valor maior que 0 R$");
+				} else {
+					precoPositivo = true;
+				}
+			} catch (Exception e) {
+				System.err.println("Erro - Digite um valor numerico");
+			}
+			sc.nextLine();
+		}
 
-		System.out.println("Digite a quantidade de produto:");
-		int qtd = sc.nextInt();
+		int qtd = 0;
+		// Inicio do input dos dependentes, e da verificação
+		boolean qtdPositivo = false;
+		while (qtdPositivo == false) {
+			System.out.println("Digite a quantidade de produtos");
+			try {
+				qtd = sc.nextInt();
+				if (qtd < 0) {
+					System.err.println("Erro - Não e possivel ter menos de 0");
+				} else {
+					qtdPositivo = true;
+				}
+			} catch (Exception e) {
+				System.err.println("Erro - Digite um valor numerico");
+			}
+			sc.nextLine();
+		}
+
 
 		long id = getNextId();
 		
@@ -33,8 +74,24 @@ public class HandleMenuProduto {
 	}
 	
 	public void editar() {
-		System.out.println("Digite o ID do produto a ser modificado");
-		long id = sc.nextLong();
+		
+		long id = 0;
+		// Inicio do input dos dependentes, e da verificação
+		boolean idPositivo = false;
+		while (idPositivo == false) {
+			System.out.println("Digite o ID que deseja modificar");
+			try {
+				id = sc.nextLong();
+				if (id < 0) {
+					System.err.println("Erro - Não e possivel ter um ID negativo");
+				} else {
+					idPositivo = true;
+				}
+			} catch (Exception e) {
+				System.err.println("Erro - Digite um valor numerico");
+			}
+			sc.nextLine();
+		}
 		
 		System.out.println("Digite o novo nome");
 		String nome = sc.next();
@@ -63,6 +120,14 @@ public class HandleMenuProduto {
 		long id = sc.nextLong();
 		
 		gp.listarProdutoId(id);
+	}
+	
+	public void somarPreco() {
+		System.out.println("Preço total "+ gp.somarPreco());
+	}
+	
+	public void contarProduto() {
+		System.out.println("Total Produto "+ gp.contarProduto());
 	}
 
 	private long getNextId() {

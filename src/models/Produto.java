@@ -2,7 +2,7 @@ package models;
 
 public class Produto {
 	
-	private long id;
+	private long idp;
 	private String nome;
 	private double preco;
 	private int quantidade;
@@ -12,17 +12,17 @@ public class Produto {
 	
 	public Produto(long id, String nome, double preco, int quantidade) {
 		super();
-		this.id = id;
+		this.idp = id;
 		this.nome = nome;
 		this.preco = preco;
 		this.quantidade = quantidade;
 	}
 	
 	public long getId() {
-		return id;
+		return idp;
 	}
 	public void setId(long id) {
-		this.id = id;
+		this.idp = id;
 	}
 	public String getNome() {
 		return nome;
@@ -45,7 +45,7 @@ public class Produto {
 	
 	@Override 
 	public String toString() {
-		return id + ";" + nome + ";" + preco + ";" + quantidade;
+		return idp + ";" + nome + ";" + preco + ";" + quantidade;
 	}
 	
 }

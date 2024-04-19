@@ -80,7 +80,6 @@ public class GerenciadorDeProduto {
 
 	public void listarProdutos() {
 		List<Produto> produtos = lerProdutos();
-
 		if (produtos.isEmpty()) {
 			System.out.println("Nenhum produto cadastrado");
 		} else {
@@ -102,10 +101,12 @@ public class GerenciadorDeProduto {
 			if (produto.getId() == id) {
 				System.out.println("ID: " + produto.getId() + ", Nome: " + "" + produto.getNome() + ", Preço: "
 						+ produto.getPreco() + ", Quantidade: " + produto.getQuantidade());
-			} else {
-				System.out.println("Nao existe esse produto");
-				break;
+				encontrado = true;
 			}
+
+		}
+		if (!encontrado) {
+			System.out.println("Usuario nao encontrado");
 		}
 	}
 
@@ -129,5 +130,25 @@ public class GerenciadorDeProduto {
 		} else {
 			System.out.println("Produto nao encontrado");
 		}
+	}
+
+	public double somarPreco() {
+		List<Produto> produtos = lerProdutos();
+		double precoTotal = 0;
+
+		for (Produto produto : produtos) {
+			precoTotal += produto.getPreco() * produto.getQuantidade();
+
+		}
+		return precoTotal;
+	}
+
+	public int contarProduto() {
+		List<Produto> produtos = lerProdutos();
+		int produtoTotal = 0;
+		for (Produto produto : produtos) {
+			produtoTotal += produto.getQuantidade();
+		}
+		return produtoTotal;
 	}
 }
