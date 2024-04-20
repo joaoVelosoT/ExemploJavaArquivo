@@ -1,7 +1,0 @@
-2;maria;2.0;2
-3;mario;2.0;2
-4;joa;2.0;2
-5;maira;3.0;3
-6;jooj;45645.0;5
-7;produtoNovo;1.0;0
-8;Produto;12.0;1

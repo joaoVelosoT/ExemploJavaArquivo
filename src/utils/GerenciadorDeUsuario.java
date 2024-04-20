@@ -111,10 +111,10 @@ public class GerenciadorDeUsuario {
 						+ usuario.getSenha());
 				encontrado = true;
 			} else {
-				
+
 			}
 		}
-		if(!encontrado) {
+		if (!encontrado) {
 			System.out.println("Usuario nao encontrado");
 		}
 	}
@@ -146,6 +146,7 @@ public class GerenciadorDeUsuario {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNome().equals(login) && usuario.getSenha().equals(senha)) {
 				acesso = true;
+				break;
 			} else {
 				acesso = false;
 			}
@@ -165,15 +166,15 @@ public class GerenciadorDeUsuario {
 			if (usuario.getNome().equals(login) && usuario.getSenha().equals(senha)) {
 				acesso = true;
 				usuario.setSenha(newSenha);
-
+				reescreverArquivo(usuarios);
+				break;
 			} else {
 				acesso = false;
 			}
 		}
 
-		if (acesso) {
-			reescreverArquivo(usuarios);
-			System.out.println("Senha editado com sucesso!");
+		if (acesso == true) {
+			System.out.println("Senha editada com sucesso!");
 		} else {
 			System.out.println("Usuario nao encontrado");
 		}

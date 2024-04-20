@@ -14,19 +14,33 @@ public class Sistema {
 		int opcaoCrud = 0;
 
 		do {
+			opcao = 0;
 			System.out.println("Qual CRUD voce quer acessar: ");
 			System.out.println("1 - Usuarios \n2 - Produtos");
-			opcao = sc.nextInt();
+			try {
+				opcao = sc.nextInt();
+			} catch (Exception e) {
+				System.out.println("Digite a opcao correta");
+				sc.next();
+			}
+			
 
 			switch (opcao) {
 			case 1: {
 				HandleMenu hu = new HandleMenu();
 				System.out.println("---------------CRUD USUARIO---------------");
 				do {
-
+					opcaoCrud = 0;
 					System.out.print(
 							"1 - Criar \n2 - Editar \n3 - Deletar \n4 - Listar \n5 - ListarId \n6 - Login  \n7 - Trocar Senha \n9 - Sair\n");
-					opcaoCrud = sc.nextInt();
+				
+					try {
+						opcaoCrud = sc.nextInt();
+					} catch (Exception e) {
+						System.out.println("Escreva a opcao correta");
+						sc.next();
+					}
+					
 
 					switch (opcaoCrud) {
 					case 1: {
@@ -71,14 +85,21 @@ public class Sistema {
 				break;
 			}
 			case 2: {
-
+				
 				HandleMenuProduto hm = new HandleMenuProduto();
 				System.out.println("---------------CRUD PRODUTO---------------");
 				do {
-
+					opcaoCrud = 0;
 					System.out.print(
 							"1 - Criar \n2 - Editar \n3 - Deletar \n4 - Listar \n5 - ListarId \n6 - Somar Preços \n7 - Contar Produtos  \n9 - Sair\n");
-					opcaoCrud = sc.nextInt();
+					
+					try {
+						opcaoCrud = sc.nextInt();
+					} catch (Exception e) {
+						System.out.println("Digite a opcao correta");
+						sc.next();
+					}
+					
 
 					switch (opcaoCrud) {
 					case 1: {
