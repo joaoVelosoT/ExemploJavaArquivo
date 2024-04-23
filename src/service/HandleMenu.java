@@ -41,6 +41,8 @@ public class HandleMenu {
 			if (senha.length() == 0) {
 				System.err.println("Não deixe espaços vazios");
 
+			} else if(senha.equalsIgnoreCase(nome)) { 
+				System.err.println("Sua senha não pode ser igual ao seu nome");
 			} else {
 				senhaVazio = true;
 			}
